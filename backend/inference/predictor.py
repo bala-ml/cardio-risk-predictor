@@ -6,7 +6,7 @@ from joblib import load
 
 
 # Path to model file
-MODEL_PATH = Path(__file__).resolve().parents[1] / "models" / "cardio_prediction_model.joblib"
+MODEL_PATH = Path(__file__).resolve().parents[1] / "model" / "cardio_prediction_model.joblib"
 
 # Logging setup (Render-safe)
 logging.basicConfig(

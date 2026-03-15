@@ -11,7 +11,7 @@ from joblib import load
 load_dotenv()
 
 
-PROJECT_ROOT = Path(os.getenv("PROJECT_ROOT")).resolve()
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 MODEL_PATH = PROJECT_ROOT / os.getenv("MODEL_DIR") / os.getenv("MODEL_NAME")
 LOG_PATH = PROJECT_ROOT / os.getenv("LOG_DIR") / os.getenv("LOG_NAME")
 

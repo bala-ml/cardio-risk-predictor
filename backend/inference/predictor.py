@@ -5,24 +5,28 @@ from pathlib import Path
 import pandas as pd
 from dotenv import load_dotenv
 from joblib import load
+import joblib
+
 
 
 # load .env content to env vars
 load_dotenv()
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+# Path to model file
 MODEL_PATH = Path(__file__).resolve().parents[1] / "models" / "cardio_prediction_model.joblib"
-LOG_PATH = PROJECT_ROOT / os.getenv("LOG_DIR") / os.getenv("LOG_NAME")
 
-LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+# Load model
+model = joblib.load(MODEL_PATH)
+
+
 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
     handlers=[
         logging.StreamHandler(),
-        logging.FileHandler(LOG_PATH)
+        logging.FileHandler()
     ]
 )
 

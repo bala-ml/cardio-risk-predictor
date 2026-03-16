@@ -1,12 +1,17 @@
+import sys
 import os
-import requests
+# import requests
 import streamlit as st
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from backend.inference.predictor import predict
 
 # load .env to env vars
-load_dotenv()
+# load_dotenv()
 
-API_URL = os.getenv("API_URL")
+# API_URL = os.getenv("API_URL")
 
 st.set_page_config(
     page_title="Cardio Risk Predictor",
@@ -69,25 +74,26 @@ if st.button("🔍 Predict"):
         "thal": thal
     }
 
-    response = requests.post(API_URL, json=input_data)
+    # response = requests.post(API_URL, json=input_data)
 
-    if response.status_code != 200:
-        st.error("Something went wrong. Try again later...")
+    # if response.status_code != 200:
+    #     st.error("Something went wrong. Try again later...")
     
+    # else:
+    #     result = response.json()
+    result = predict(input_data)
+    prediction = result["prediction"]
+    probability = result["probability"]
+    diagnosis = result["diagnosis"]
+
+    st.divider()
+
+    st.metric(
+        label="Cardio Risk Probability",
+        value=f"{probability:.2f}"
+    )
+
+    if prediction == 1:
+        st.error(f"⚠️Model Prediction: {diagnosis}")
     else:
-        result = response.json()
-        prediction = result["prediction"]
-        probability = result["probability"]
-        diagnosis = result["diagnosis"]
-
-        st.divider()
-
-        st.metric(
-            label="Cardio Risk Probability",
-            value=f"{probability:.2f}"
-        )
-
-        if prediction == 1:
-            st.error(f"⚠️Model Prediction: {diagnosis}")
-        else:
-            st.success(f"✅ Model Prediction: {diagnosis}")
+        st.success(f"✅ Model Prediction: {diagnosis}")

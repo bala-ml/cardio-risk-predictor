@@ -166,7 +166,7 @@ cardio-risk-detector/
 ### 1️⃣ Clone the Repository
 
 ```
-git clone https://github.com/your-username/cardio-risk-detector.git
+git clone https://github.com/bala-ml/cardio-risk-predictor.git
 cd cardio-risk-detector
 ```
 

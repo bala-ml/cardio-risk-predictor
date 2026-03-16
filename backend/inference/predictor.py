@@ -17,7 +17,7 @@ MODEL_PATH = PROJECT_ROOT / "model" / "cardio_prediction_model.joblib"
 
 model = joblib.load(MODEL_PATH)
 
-LOG_PATH = PROJECT_ROOT / os.getenv("LOG_DIR") / os.getenv("LOG_NAME")
+LOG_PATH = PROJECT_ROOT / "logs" / "app.log"
 
 LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
 

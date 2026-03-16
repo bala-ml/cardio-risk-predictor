@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from inference.predictor import predict
+from backend.inference.predictor import predict
 
 
 app = FastAPI(
@@ -31,9 +31,9 @@ def health_check():
     return {"status": "ok"}
 
 
-# Cardio Risk prediction endpoint
+# Cardio Risk Predictor endpoint
 @app.post("/predict-cardio-risk")
-def predict_cardio_risk(input_data: CardioRiskInput):
+def predict_heart_disease(input_data: CardioRiskInput):
     input_data = input_data.model_dump()
     result = predict(input_data=input_data)
     return {

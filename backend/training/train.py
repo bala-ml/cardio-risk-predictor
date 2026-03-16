@@ -13,6 +13,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report, recall_score, f1_score
 
 
+
 def train_model():
     try:
         # load env file content to env vars

@@ -19,7 +19,7 @@ This tool highlights how Machine Learning can support early detection of cardiov
 ## 🚀 Live Demo
 
 🔗 Try the deployed application here:  
-👉 **YOUR_LIVE_LINK_HERE**
+👉 **https://cardio-risk-predictorgit-mhdhzqhwlxvmskvjtnpwsm.streamlit.app/**
 
 ---
 
